@@ -376,7 +376,7 @@
 
     function drawRain(){
         if(!rain.active||rain.drops.length===0)return;
-        ctx.save();ctx.strokeStyle='rgba(150,180,220,0.4)';ctx.lineWidth=1.5;ctx.lineCap='round';
+        ctx.save();ctx.strokeStyle='rgba(100,150,220,0.7)';ctx.lineWidth=2.5;ctx.lineCap='round';
         for(const d of rain.drops){
             ctx.beginPath();ctx.moveTo(d.x,d.y);ctx.lineTo(d.x-1,d.y+d.len);ctx.stroke();
         }
@@ -539,12 +539,12 @@
 
     function drawWindStreaks(){
         if(!wind.active)return;
-        ctx.save();ctx.strokeStyle='rgba(255,255,255,0.4)';ctx.lineWidth=1.5;ctx.lineCap='round';
+        ctx.save();ctx.strokeStyle='rgba(200,220,255,0.7)';ctx.lineWidth=2.5;ctx.lineCap='round';
         const t=Date.now()*0.25*wind.direction;
-        for(let i=0;i<12;i++){
-            const y=((i*55+t*0.08)%GAME_HEIGHT+GAME_HEIGHT)%GAME_HEIGHT;
+        for(let i=0;i<20;i++){
+            const y=((i*35+t*0.08)%GAME_HEIGHT+GAME_HEIGHT)%GAME_HEIGHT;
             const x=wind.direction>0?((t+i*90)%(GAME_WIDTH+200))-100:GAME_WIDTH-(((-t+i*90)%(GAME_WIDTH+200))-100);
-            ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+(20+Math.random()*35)*wind.direction,y);ctx.stroke();
+            ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+(30+Math.random()*50)*wind.direction,y);ctx.stroke();
         }
         ctx.restore();
     }
